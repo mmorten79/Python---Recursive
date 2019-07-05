@@ -59,29 +59,21 @@ def k_subsets_naive(S, k):
 
 ############################################################
 
-
-
-def k_subset_better(S,k):
-       
+def k_subset_better(S,k): 
     if (len(S) == 0):
-        return [[]]
-    
+       return [[]]
+
     else:
-        start_time=time.process_time()
         x = S.pop(0)
         power_set_wo = power_set(S)
-        second=[]
         keep=[]
         for i in power_set_wo: 
             if (len(set(i)) == k):
                 keep.append(i)
             elif (len(set(i)) == k -1):
-                second.append([x] + i)
-            else:
                 k_subset_better(S,k-1)
-        end_time = time.process_time()
-        print(end_time)        
-        return second + keep 
+        
+        return keep 
                
          #finished_set=sets_to_be_used + h
 #I was able to get them both time and the recursive method is twice as fast. 
